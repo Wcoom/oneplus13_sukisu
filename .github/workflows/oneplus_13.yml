@@ -59,6 +59,11 @@ jobs:
           sudo apt install -y python3 git curl
           sudo apt install -y python3 git curl ccache
 
+      - name: Clear ccache
+        run: |
+          ccache -C  # 清除所有缓存
+          ccache --zero-stats  # 重置统计信息
+
       - name: Restore ccache
         uses: actions/cache@v3
         with:
